@@ -8,11 +8,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 
-class MainActivity : AppCompatActivity() {
+class MessageViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.message_view)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView) as RecyclerView
         val button = findViewById<Button>(R.id.button) as Button

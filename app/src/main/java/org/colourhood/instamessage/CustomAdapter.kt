@@ -1,56 +1,30 @@
 package org.colourhood.instamessage
 
 import android.support.v7.widget.RecyclerView
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import org.w3c.dom.Text
 
 class CustomAdapter (val userList: ArrayList<User>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        var view : View = LayoutInflater.from(parent?.context).inflate(R.layout.list_layout, parent, false)
+        var view : View = LayoutInflater.from(parent?.context).inflate(R.layout.sent_message_list, parent, false)
         when(viewType) {
             0 -> {
-                view = LayoutInflater.from(parent?.context).inflate(R.layout.list_layout, parent, false)
-                return ViewHolder1(view)
+                view = LayoutInflater.from(parent?.context).inflate(R.layout.sent_message_list, parent, false)
+                return SentMessageViewHolder(view)
             }
             2 -> {
-                view = LayoutInflater.from(parent?.context).inflate(R.layout.list_layout_alt, parent, false)
-                return ViewHolder2(view)
-
+                view = LayoutInflater.from(parent?.context).inflate(R.layout.received_message_list, parent, false)
+                return ReceivedMessageViewHolder(view)
             }
         }
-        return ViewHolder1(view)
+        return SentMessageViewHolder(view)
     }
 
     override fun getItemViewType(position: Int): Int {
         return position %2 *2
     }
-
-//    val v = LayoutInflater.from(parent?.context).inflate(R.layout.list_layout, parent, false)
-//    return ViewHolder(v)
-
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder? {
-//        var view: View? = null
-//        var viewHolder: RecyclerView.ViewHolder? = null
-//        when (viewType) {
-//            0 -> {
-//                view = View.inflate(parent.context, R.layout.list_item_empty_view, null)
-//                viewHolder = EmptyViewHolder(view)
-//            }
-//            1 -> {
-//                view = View.inflate(parent.context, R.layout.review_list_item, null)
-//                viewHolder = ViewHolder(view)
-//            }
-//        }
-//        return viewHolder
-//    }
 
     override fun getItemCount(): Int {
         return userList.size
@@ -59,25 +33,24 @@ class CustomAdapter (val userList: ArrayList<User>): RecyclerView.Adapter<Recycl
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         val user: User = userList[position]
         if (position%2 ==0) {
-            val holder1 = holder as ViewHolder1
-            holder1.textViewName.text = user.name
-            holder1.textViewAddress.text = user.address
+            val holder1 = holder as SentMessageViewHolder
+            holder1.sentText.text = user.name
+            holder1.sentAddress.text = user.address
         } else {
-            val holder2 = holder as ViewHolder2
-            holder2.textViewName1.text = user.name
-            holder2.textViewAddress1.text = user.address
+            val holder2 = holder as ReceivedMessageViewHolder
+            holder2.receiveText.text = user.name
+            holder2.receiveAddress.text = user.address
         }
 
     }
 
-    class ViewHolder1(itemView: View) :RecyclerView.ViewHolder(itemView){
-        val textViewName = itemView.findViewById<TextView>(R.id.textViewName) as TextView
-        val textViewAddress = itemView.findViewById<TextView>(R.id.textViewAddress) as TextView
+    class SentMessageViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
+        val sentText = itemView.findViewById<TextView>(R.id.sentText) as TextView
+        val sentAddress = itemView.findViewById<TextView>(R.id.sentAddress) as TextView
     }
 
-    class ViewHolder2(itemView: View) :RecyclerView.ViewHolder(itemView){
-        val textViewName1 = itemView.findViewById<TextView>(R.id.textViewName1) as TextView
-        val textViewAddress1 = itemView.findViewById<TextView>(R.id.textViewAddress1) as TextView
-
+    class ReceivedMessageViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
+        val receiveText = itemView.findViewById<TextView>(R.id.receiveText) as TextView
+        val receiveAddress = itemView.findViewById<TextView>(R.id.receiveAddress) as TextView
     }
 }
