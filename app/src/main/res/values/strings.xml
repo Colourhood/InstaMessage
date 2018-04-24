@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">InstaMessage</string>
+    <string name="PlaceHolder">place holder</string>
 </resources>
