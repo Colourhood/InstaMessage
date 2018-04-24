@@ -8,40 +8,40 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 
-class MessageViewActivity : AppCompatActivity() {
+class MessageViewActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.message_view)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView) as RecyclerView
-        val button = findViewById<Button>(R.id.button) as Button
-        val text = findViewById<EditText>(R.id.editText) as EditText
+        val recyclerView: RecyclerView = findViewById(R.id.message_recyclerView)
+        val sendMessage: Button = findViewById(R.id.send_message_button)
+        val messageEditText: EditText = findViewById(R.id.message_editText)
 
-
-        button.setOnClickListener() {
-            text.setText("")
-        }
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
-        val users = ArrayList<User>()
-        users.add(User("Jacob LU", "Bellevue, WA"))
-        users.add(User("Jacob Lu1", "Bellevue1, WA"))
-        users.add(User("Jacob Lu2", "Bellevue1, WA"))
-        users.add(User("Jacob Lu31421", "Bellevue3223, WA"))
-        users.add(User("Jacob Lu1122241", "Bellevue123, WA"))
-        users.add(User("Jacob Lu", "Bellevue234234, WA"))
-        users.add(User("Jacob Lu1", "Bellevue1, WA"))
-        users.add(User("Jacob Lu2", "Bellevue1, WA"))
-        users.add(User("Jacob Lu31421", "Bellevue3223, WA"))
-        users.add(User("Jacob Lu1122241", "Bellevue123, WA"))
-        users.add(User("Jacob Lu1", "Bellevue1, WA"))
-        users.add(User("Jacob Lu2", "Bellevue1, WA"))
-        users.add(User("Jacob Lu31421", "Bellevue3223, WA"))
-        users.add(User("Jacob Lu1122241", "Bellevue123, WA"))
+        //TODO: This is just hardcoded data for testing. Will get rid of it when backend is ready.
+        val userSampleKat = User("Katherine", "Seattle, WA", 1)
+        val userSamleJacob = User("Jacob LU", "Bellevue, WA", 0)
+        val userSampleAndrei = User("Andrei", "Seatlte, WA", 2)
+        var users = setOf(userSamleJacob, userSampleAndrei, userSampleKat)
 
-        val adapter = CustomAdapter(users)
+        val messages = ArrayList<UserMessage>()
+        messages.add(UserMessage("Hello, Katherine. What is the plan for tonight?", userSampleAndrei))
+        messages.add(UserMessage("We will go to UW for meeting tonight", userSampleKat))
+        messages.add(UserMessage("Sounds good!", userSampleAndrei))
+        messages.add(UserMessage("When do we leave?", userSampleAndrei))
+        messages.add(UserMessage("I plan to head out around 6pm", userSampleKat))
 
+        val adapter = MessageViewAdapter(messages)
         recyclerView.adapter = adapter
+
+        sendMessage.setOnClickListener {
+            val editMessage = messageEditText.text as? String
+            editMessage?.let {
+                // TODO: Will change the logic to current user after merge login page
+                messages.add(UserMessage(editMessage, userSampleKat))
+            }
+        }
     }
 }
