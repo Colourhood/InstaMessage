@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.view.WindowManager
+
+
 
 class MessageViewActivity: AppCompatActivity() {
 
@@ -32,6 +35,9 @@ class MessageViewActivity: AppCompatActivity() {
         messages.add(UserMessage("Sounds good!", userSampleAndrei))
         messages.add(UserMessage("When do we leave?", userSampleAndrei))
         messages.add(UserMessage("I plan to head out around 6pm", userSampleKat))
+        messages.add(UserMessage("Could you please pick me up at my office around 6?", userSampleKat))
+        messages.add(UserMessage("I need to take Swifty out for a walk before I leave", userSampleKat))
+        messages.add(UserMessage("Sounds good! See you soon :)", userSampleAndrei))
 
         val adapter = MessageViewAdapter(messages)
         recyclerView.adapter = adapter
