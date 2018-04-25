@@ -11,15 +11,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         var b = findViewById<Button>(R.id.button) as Button
 
-
-        b.setOnClickListener{
+        b.setOnClickListener {
 
             val intentChatList = Intent(this, ChatListView::class.java)
-            startActivity(intentChatList);
+            startActivity(intentChatList)
+        }
 
+        val pushToMessageView: Button = findViewById(R.id.message_view_button)
+        pushToMessageView.setOnClickListener {
+            val intent = Intent(this, MessageViewActivity::class.java)
+            startActivity(intent)
         }
     }
 }
