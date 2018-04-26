@@ -9,8 +9,7 @@ class LoginInside : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_inside)
-//        val m = intent.action
-        val textView = findViewById<TextView>(R.id.login_Inside).apply {  }
+        findViewById<TextView>(R.id.login_Inside).apply {}
     }
 
 

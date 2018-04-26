@@ -12,8 +12,8 @@ class LoginAndSignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_and_sign_up)
 
-
     }
+
     fun displaySignUpActivity(view: View) {
         findViewById<Button>(R.id.signUp_outside)
         startActivity(Intent(this,SignUpInside::class.java).apply {})
@@ -22,6 +22,5 @@ class LoginAndSignUp : AppCompatActivity() {
     fun displaySignInActivity(view: View) {
         findViewById<Button>(R.id.signIn_Outside)
         startActivity(Intent(this,LoginInside::class.java).apply {})
-
     }
 }

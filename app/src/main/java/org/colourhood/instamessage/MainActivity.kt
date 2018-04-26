@@ -13,21 +13,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+    }
+    fun displayTheSignUpLogin(view:View) {
+        findViewById<Button>(R.id.button_test)
+        startActivity(Intent(this,LoginAndSignUp::class.java)).apply {}
     }
 
-    fun signUp(view: View) {
-        val invokeSignUp = findViewById<Button>(R.id.signUp_outside)
-        val intent = Intent(this,SignUpInside::class.java).apply {
 
-        }
-        startActivity(intent)
-    }
-
-    fun signIn(view:View) {
-        val invokeSingIn = findViewById<Button>(R.id.signIn_Outside)
-        val intent = Intent(this,LoginInside::class.java).apply {  }
-        startActivity(intent)
-
-    }
 }

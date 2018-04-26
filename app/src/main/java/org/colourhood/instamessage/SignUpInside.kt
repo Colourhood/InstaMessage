@@ -11,6 +11,6 @@ class SignUpInside : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_inside)
-        val textView = findViewById<TextView>(R.id.signUp_Inside)
+        findViewById<TextView>(R.id.signUp_Inside)
     }
 }
